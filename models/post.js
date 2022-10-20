@@ -5,7 +5,7 @@ class Publish extends Model {
   static upvote(body, models) {
     return models.Vote.create({
       user_id: body.user_id,
-      post_id: body.post_id
+      publish_id: body.publish_id
     }).then(() => {
       return Publish.findOne({
         where: {
@@ -16,7 +16,7 @@ class Publish extends Model {
           'publish_url',
           'title',
           'created_at',
-          [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE publish.id = vote.post_id)'), 'vote_count']
+          [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE publish.id = vote.publish_id)'), 'vote_count']
         ],
         include: [
           {

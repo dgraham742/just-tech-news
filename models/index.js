@@ -5,7 +5,7 @@ const Vote = require('./Vote');
 const Comment = require('./Comment');
 
 // create associations
-User.hasMany(Post, {
+User.hasMany(Publish, {
   foreignKey: 'user_id'
 });
 
@@ -43,7 +43,7 @@ User.hasMany(Vote, {
   foreignKey: 'user_id'
 });
 
-Post.hasMany(Vote, {
+Publish.hasMany(Vote, {
   foreignKey: 'publish_id'
 });
 
@@ -62,7 +62,7 @@ User.hasMany(Comment, {
   onDelete: 'SET NULL'
 });
 
-Post.hasMany(Comment, {
+Publish.hasMany(Comment, {
   foreignKey: 'publish_id'
 });
 
